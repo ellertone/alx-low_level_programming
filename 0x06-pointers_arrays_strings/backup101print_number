@@ -1,0 +1,35 @@
+#include <math.h>
+/**
+ * print_number - Converts Integer to string
+ * @n: Input integer
+ * Return: void
+ */
+void print_number(int n)
+{
+        int i;
+        int len;
+        int j;
+        int mux;
+        int out;
+
+        len =0;
+        i = n;
+        while (i/10 != 0)
+        {
+                len++;
+                i /= 10;
+        }
+        mux = pow(10,len);
+        if (n < 0)
+        {
+                putchar('-');
+                n *= -1;
+        }
+        for (j = 0; j <= len; j++)
+        {
+                out = n / mux;
+                putchar(out + '0');
+                n = n-(mux*out);
+                mux /= 10;
+        }
+}
