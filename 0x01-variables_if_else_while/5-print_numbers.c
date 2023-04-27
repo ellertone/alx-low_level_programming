@@ -5,6 +5,7 @@
 *print 0-9 using putchar
 *Return: Value 0 (true)
 */
+
 int main(void)
 {
 	char ch = '0';
@@ -14,6 +15,7 @@ int main(void)
 	{
 		putchar(ch);
 		ch++;
+		putchar('\n');
 	}
 	putchar('\n');
 	return (0);
