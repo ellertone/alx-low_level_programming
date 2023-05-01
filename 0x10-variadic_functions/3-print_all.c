@@ -1,30 +1,37 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdarg.h>
 #include "variadic_functions.h"
+
 /**
- * print_i - prints int
- * @list: arguement of list
- * @s: seperator
- * Return: none
+ * print_i - prints integer
+ * @list: argument of list
+ * @s: separator
+ *
+ * Return: nothing
  */
 void print_i(va_list list, char *s)
 {
 	printf("%s%d", s, va_arg(list, int));
 }
+
 /**
- * print_c - prints char
- * @list: arguement char
- * @sep: seperator
+ * print_c - prints character
+ * @list: argument of character
+ * @sep: separator
+ *
+ * Return: nothing
  */
 void print_c(va_list list, char *sep)
 {
 	printf("%s%c", sep, va_arg(list, int));
 }
+
 /**
  * print_s - prints string
- * @sep: seperator
- * @list: list to print
- * Return: none
+ * @list: argument of string
+ * @sep: separator
+ *
+ * Return: nothing
  */
 void print_s(va_list list, char *sep)
 {
@@ -35,19 +42,24 @@ void print_s(va_list list, char *sep)
 		s = "(nil)";
 	printf("%s%s", sep, s);
 }
+
 /**
- * print_f - prints floats
- * @sep: float to print
- * @list: next arguement of list to print
- * Return: none
+ * print_f - prints float
+ * @list: argument of float
+ * @sep: separator
+ *
+ * Return: nothing
  */
 void print_f(va_list list, char *sep)
 {
 	printf("%s%f", sep, va_arg(list, double));
 }
+
 /**
- * print_all - prints out all stuff
- * @format: format is list of types of arguements
+ * print_all - prints all arguments
+ * @format: format is a list of types of arguments
+ *
+ * Return: nothing
  */
 void print_all(const char * const format, ...)
 {
@@ -61,10 +73,11 @@ void print_all(const char * const format, ...)
 		{"s", print_s},
 		{NULL, NULL}
 	};
+
 	va_start(list, format);
 	i = 0;
 	sep = "";
-	while (format != NULL && format[i] != '\0')
+	while (format && format[i])
 	{
 		j = 0;
 		while (j < 4)
@@ -81,3 +94,4 @@ void print_all(const char * const format, ...)
 	printf("\n");
 	va_end(list);
 }
+
